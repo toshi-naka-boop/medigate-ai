@@ -1,0 +1,20 @@
+﻿# env files
+.env
+*.env
+.env.*
+
+# python cache
+__pycache__/
+*.pyc
+
+# venv
+.venv/
+venv/
+
+# streamlit
+.streamlit/secrets.toml
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
