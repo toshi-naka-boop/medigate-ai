@@ -1,0 +1,17 @@
+# Cloud Build: longer timeout and larger machine for pip install
+# Use: gcloud.cmd builds submit --config=cloudbuild.yaml . --region=asia-northeast1
+# Then: gcloud.cmd run deploy medigate-ai --image=... --region=asia-northeast1 ...
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/medigate-ai:latest'
+      - '.'
+options:
+  machineType: 'E2_HIGHCPU_8'
+  logging: CLOUD_LOGGING_ONLY
+timeout: '1200s'
+images:
+  - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/medigate-ai:latest'

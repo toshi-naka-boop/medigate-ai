@@ -18,3 +18,9 @@ venv/
 .DS_Store
 Thumbs.db
 .vscode/
+
+# local datasets
+data/
+output/
+*.csv
+

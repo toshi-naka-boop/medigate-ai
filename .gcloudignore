@@ -1,0 +1,14 @@
+﻿.git
+.env
+.env.*
+__pycache__/
+*.pyc
+.venv/
+venv/
+.cursor/
+.idea/
+.vscode/
+*.log
+
+# もし巨大でビルドが落ちるなら次を有効化（後述のGCS案に切替）
+# output/

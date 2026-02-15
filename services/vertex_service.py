@@ -3,11 +3,23 @@ Vertex AI (Gemini) を用いた症状分析・推奨科・PQRSTメモ生成
 """
 import vertexai
 from vertexai.generative_models import GenerativeModel
+import os
+from dotenv import load_dotenv
+import vertexai
+from vertexai.generative_models import GenerativeModel
 
+load_dotenv(override=True)
 
-def _get_model(project_id: str, location: str = "us-central1"):
+def _get_model(project_id: str | None = None, location: str | None = None):
+    project_id = project_id or os.getenv("GOOGLE_CLOUD_PROJECT")
+    location = location or os.getenv("VERTEX_LOCATION", "asia-northeast1")
+    model_id = os.getenv("VERTEX_MODEL_ID", "gemini-2.5-flash")
+    # Vertex のモデル ID 末尾 -001 は省略して指定する（例: gemini-2.0-flash）
+    if model_id.endswith("-001"):
+        model_id = model_id[:-4]
+
     vertexai.init(project=project_id, location=location)
-    return GenerativeModel("gemini-2.0-flash-001")
+    return GenerativeModel(model_id)
 
 
 def generate_followup_questions(

@@ -1,0 +1,17 @@
+# Cloud Run デプロイ時のアップロードから除外（gcloud run deploy --source .）
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+__pycache__
+*.pyc
+.venv
+venv
+*.md
+.cursor
+.idea
+.vscode
+*.log
+data/
+scripts/
